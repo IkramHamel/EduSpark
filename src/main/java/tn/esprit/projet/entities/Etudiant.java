@@ -1,9 +1,13 @@
 package tn.esprit.projet.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import org.hibernate.annotations.ManyToAny;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Etudiant {
@@ -14,4 +18,6 @@ public class Etudiant {
     long cin;
     String ecole;
     Date dateNai;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
 }

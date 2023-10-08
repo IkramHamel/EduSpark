@@ -1,7 +1,8 @@
 package tn.esprit.projet.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Bloc
@@ -10,4 +11,8 @@ public class Bloc
     long idBloc;
    String nomBloc;
    long capaciteBloc;
+    @ManyToOne
+    Foyer foyer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="chambre")
+    private Set<Chambre> chambres;
 }

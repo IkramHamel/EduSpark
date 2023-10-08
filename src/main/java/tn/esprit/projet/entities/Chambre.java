@@ -1,9 +1,8 @@
 package tn.esprit.projet.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Chambre {
@@ -12,6 +11,9 @@ public class Chambre {
     long numeroChambre;
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
-
+    @ManyToOne
+    Chambre chambre;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservation;
 
 }
