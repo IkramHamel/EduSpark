@@ -12,8 +12,9 @@ public class Chambre {
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
     @ManyToOne
-    Chambre chambre;
-    @OneToMany(cascade = CascadeType.ALL)
+        Bloc bloc;
+
+    @OneToMany()
     private Set<Reservation> reservation;
 
 }

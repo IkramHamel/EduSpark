@@ -14,7 +14,6 @@ public class Reservation {
     String idReservation;
     Date anneeUniv;
     boolean estValide;
-    @ManyToMany(mappedBy="etudiants", cascade = CascadeType.ALL)
-
-    private Set<Reservation> reservations;
+    @ManyToMany(mappedBy = "reservations")
+    private Set<Etudiant> etudiants;
 }

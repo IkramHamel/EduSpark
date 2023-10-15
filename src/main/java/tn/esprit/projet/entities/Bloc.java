@@ -13,6 +13,6 @@ public class Bloc
    long capaciteBloc;
     @ManyToOne
     Foyer foyer;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="chambre")
+    @OneToMany( mappedBy="bloc")
     private Set<Chambre> chambres;
 }

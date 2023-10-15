@@ -12,9 +12,9 @@ public class Foyer implements Serializable {
     long idFoyer;
     String nomFoyer;
     long capaciteFoyer;
-    @OneToOne(mappedBy="projetDetail")
+    @OneToOne(mappedBy="foyer")
     private Universite universite;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
+    @OneToMany(mappedBy="foyer")
     private Set<Bloc> blocs;
 
 }
