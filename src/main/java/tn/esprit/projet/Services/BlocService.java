@@ -40,6 +40,10 @@ public class BlocService implements IBlocService{
 
     @Override
     public Bloc updateBloc(Bloc bloc) {
-        return null;
+        if(bloc.getIdBloc()==0){
+            blocRepository.save(bloc);
+            return bloc;
+        }
+        return bloc;
     }
 }

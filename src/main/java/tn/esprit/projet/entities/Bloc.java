@@ -15,4 +15,12 @@ public class Bloc
     Foyer foyer;
     @OneToMany( mappedBy="bloc")
     private Set<Chambre> chambres;
+
+    public long getIdBloc() {
+        return idBloc;
+    }
+
+    public void setIdBloc(long idBloc) {
+        this.idBloc = idBloc;
+    }
 }
