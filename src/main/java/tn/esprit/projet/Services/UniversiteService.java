@@ -1,18 +1,20 @@
 package tn.esprit.projet.Services;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.Repositories.UniversiteRepository;
+import tn.esprit.projet.entities.Reservation;
 import tn.esprit.projet.entities.Universite;
 
 import java.util.List;
 @Service
+@AllArgsConstructor
 public class UniversiteService implements IUniversiteService{
 
-    private final UniversiteRepository universiteRepository;
+     UniversiteRepository universiteRepository;
 
-    public UniversiteService(UniversiteRepository universiteRepository) {
-        this.universiteRepository = universiteRepository;
-    }
+
 
     @Override
     public Universite addUniversite(Universite universite) {
@@ -36,6 +38,9 @@ public class UniversiteService implements IUniversiteService{
 
     @Override
     public Universite updateUniversite(Universite universite) {
-        return null;
+        Universite univ=universiteRepository.findById(universite.getIdUniversite()).orElse(null);
+        if (univ!=null)
+            universiteRepository.save(universite);
+        return  univ;
     }
 }

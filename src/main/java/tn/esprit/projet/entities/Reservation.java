@@ -1,16 +1,23 @@
 package tn.esprit.projet.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-public class Reservation {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Reservation implements Serializable {
     @Id
+    @GeneratedValue
     String idReservation;
     Date anneeUniv;
     boolean estValide;

@@ -1,18 +1,19 @@
 package tn.esprit.projet.Services;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.Repositories.EtudiantRepository;
+import tn.esprit.projet.entities.Chambre;
 import tn.esprit.projet.entities.Etudiant;
 
 import java.util.List;
 @Service
+@AllArgsConstructor
 public class EtudiantService implements IEtudiantService{
 
-    private final EtudiantRepository etudiantRepository;
+    EtudiantRepository etudiantRepository;
 
-    public EtudiantService(EtudiantRepository etudiantRepository) {
-        this.etudiantRepository = etudiantRepository;
-    }
 
     @Override
     public Etudiant addEtudiant(Etudiant etudiant) {
@@ -36,6 +37,9 @@ public class EtudiantService implements IEtudiantService{
 
     @Override
     public Etudiant updateEtudiant(Etudiant etudiant) {
-        return null;
+        Etudiant et=etudiantRepository.findById(etudiant.getIdEtudiant()).orElse(null);
+        if (et!=null)
+            etudiantRepository.save(etudiant);
+        return  et;
     }
 }

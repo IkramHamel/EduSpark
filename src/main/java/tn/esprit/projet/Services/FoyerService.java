@@ -1,18 +1,18 @@
 package tn.esprit.projet.Services;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.Repositories.FoyerRepository;
+import tn.esprit.projet.entities.Etudiant;
 import tn.esprit.projet.entities.Foyer;
 
 import java.util.List;
  @Service
+ @AllArgsConstructor
 public class FoyerService implements IFoyerService{
+     FoyerRepository foyerRepository;
 
-     private final FoyerRepository foyerRepository;
-
-     public FoyerService(FoyerRepository foyerRepository) {
-         this.foyerRepository = foyerRepository;
-     }
 
      @Override
     public Foyer addFoyer(Foyer foyer) {
@@ -34,8 +34,11 @@ public class FoyerService implements IFoyerService{
         foyerRepository.deleteById(idFoyer);
     }
 
-    @Override
-    public Foyer updateFoyer(Foyer foyer) {
-        return null;
-    }
+     @Override
+     public Foyer updateFoyer(Foyer foyer) {
+         Foyer f=foyerRepository.findById(foyer.getIdFoyer()).orElse(null);
+         if (f!=null)
+             foyerRepository.save(foyer);
+         return  f;
+     }
 }

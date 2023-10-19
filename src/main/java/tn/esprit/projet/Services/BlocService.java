@@ -1,21 +1,20 @@
 package tn.esprit.projet.Services;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.Repositories.BlocRepository;
 import tn.esprit.projet.entities.Bloc;
 
 import java.util.List;
+import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class BlocService implements IBlocService{
 
+    BlocRepository blocRepository;
 
-    private final BlocRepository blocRepository;
-
-    public BlocService(BlocRepository blocRepository) {
-        this.blocRepository = blocRepository;
-    }
 
     @Override
     public Bloc addBloc(Bloc bloc) {
@@ -40,10 +39,14 @@ public class BlocService implements IBlocService{
 
     @Override
     public Bloc updateBloc(Bloc bloc) {
-        if(bloc.getIdBloc()==0){
+        Bloc bl=blocRepository.findById(bloc.getIdBloc()).orElse(null);
+        if (bl!=null)
             blocRepository.save(bloc);
-            return bloc;
-        }
-        return bloc;
+        return  bl;
     }
-}
+    }
+
+
+
+
+

@@ -1,18 +1,20 @@
 package tn.esprit.projet.Services;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.Repositories.ReservationRepository;
+import tn.esprit.projet.entities.Foyer;
 import tn.esprit.projet.entities.Reservation;
 
 import java.util.List;
 @Service
+@AllArgsConstructor
 public class ReservationService implements IReservationService{
 
-    private final ReservationRepository reservationRepository;
+    ReservationRepository reservationRepository;
 
-    public ReservationService(ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
-    }
+
 
     @Override
     public Reservation addReservation(Reservation reservation) {
@@ -36,6 +38,9 @@ public class ReservationService implements IReservationService{
 
     @Override
     public Reservation updateReservation(Reservation reservation) {
-        return null;
+        Reservation res=reservationRepository.findById(reservation.getIdReservation()).orElse(null);
+        if (res!=null)
+            reservationRepository.save(reservation);
+        return  res;
     }
 }

@@ -1,19 +1,20 @@
 package tn.esprit.projet.Services;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.projet.Repositories.ChambreRepository;
+import tn.esprit.projet.entities.Bloc;
 import tn.esprit.projet.entities.Chambre;
 
 import java.util.List;
 @Service
+@AllArgsConstructor
 public class ChambreService implements IChambreService {
 
 
-    private  ChambreRepository chambreRepository;
+     ChambreRepository chambreRepository;
 
-    public ChambreService(ChambreRepository chambreRepository) {
-        this.chambreRepository = chambreRepository;
-    }
 
     @Override
     public Chambre addChambre(Chambre chambre) {
@@ -37,6 +38,9 @@ public class ChambreService implements IChambreService {
 
     @Override
     public Chambre updateChambre(Chambre chambre) {
-        return null;
+        Chambre ch=chambreRepository.findById(chambre.getIdChambre()).orElse(null);
+        if (ch!=null)
+            chambreRepository.save(chambre);
+        return  ch;
     }
 }
