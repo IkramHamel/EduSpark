@@ -13,5 +13,7 @@ public interface IPlatService {
 
     void deletePlat(long idPlat);
 
-    Plat updatePlat(Plat plat);
+    Plat updatePlat(Plat plat, long idPlat);
+
+    List<Plat> findByRestaurant_IdRestaurant(Long restaurantId);
 }

@@ -6,34 +6,34 @@ import tn.esprit.ProjetSpring.Services.IRestaurantService;
 import tn.esprit.ProjetSpring.entities.Restaurant;
 
 import java.util.List;
-
+@CrossOrigin("http://localhost:4200")
 @RestController
 @AllArgsConstructor
 public class RestaurantController {
     IRestaurantService restaurantService;
 
 
-    @PostMapping("/Restaurantadd")
+    @PostMapping("/admin/Restaurantadd")
     Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
         return restaurantService.addRestaurant(restaurant);
     }
 
-    @PutMapping("/Restaurantupdate")
+    @PutMapping("/admin/Restaurantupdate")
     Restaurant updateRestaurant(@RequestBody Restaurant restaurant) {
         return restaurantService.updateRestaurant(restaurant);
     }
 
-    @GetMapping("/Restaurant/{id}")
+    @GetMapping("/EduCal/Restaurant/{id}")
     Restaurant getRestaurantById(@PathVariable long id) {
         return restaurantService.getRestaurantById(id);
     }
 
 
-    @GetMapping("/Restaurants")
+    @GetMapping("/EduCal/Restaurants")
     List<Restaurant> getAllRestaurants() {
         return restaurantService.getAllRestaurants();
     }
-    @DeleteMapping("/Restaurant/{id}")
+    @DeleteMapping("/admin/Restaurant/{id}")
     void deleteRestaurant(@PathVariable long id) {
         restaurantService.deleteRestaurant(id);
     }
