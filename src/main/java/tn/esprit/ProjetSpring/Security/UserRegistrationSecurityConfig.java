@@ -29,14 +29,11 @@ public class UserRegistrationSecurityConfig {
     };
 
     private static final String[] UN_SECURED_URLs = {
-
             "/register/**",
-
             "/authenticate/**",
-            "/authenticate/",
-            "/authenticate",
-           "/upload-directory" ,
-            "/upload-directory/**" ,
+            "/upload-directory/",
+            "/upload-directory",
+            "/upload-directory/**",
             "/login/**",
             "/admin/**",
             "/user/**",
@@ -45,12 +42,6 @@ public class UserRegistrationSecurityConfig {
             "/register/session",
             "/users",
             "/register",
-
-
-
-
-
-
     };
 
     @Autowired
@@ -80,14 +71,16 @@ public class UserRegistrationSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers(UN_SECURED_URLs).permitAll().and()
                 .authorizeHttpRequests().requestMatchers(SECURED_URLs)
-                .hasAuthority("ADMIN").anyRequest().authenticated()
+                .hasAuthority("").anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
+
                 .build();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();

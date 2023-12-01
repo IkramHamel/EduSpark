@@ -41,6 +41,7 @@ public class JWTService {
 
 
         claims.put("roles", user.getRoles());
+        claims.put("imageUrl", user.getImageUrl());
 
         // Extract role information
 
