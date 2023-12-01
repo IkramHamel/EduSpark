@@ -40,6 +40,9 @@ public class FileStorageService {
     }
 
     public String storeFile(MultipartFile file) {
+        if(file == null || file.getOriginalFilename() == null){
+            return "SomeDefaultValue";
+        }
         // Normalize file name
         String fileName =
                 file.getOriginalFilename().split("\\.")[0]  +new Date().getTime() + "-file." + getFileExtension(file.getOriginalFilename());

@@ -31,3 +31,13 @@ n
 >src/main/java/tn/esprit/ProjetSpring/Services/PlatService.java,9\a\9a3e7a32673c1d037a57beafb952d6de118046f9
 o
 ?src/main/java/tn/esprit/ProjetSpring/Services/IBlocService.java,6\d\6dc1de11ebc7fbe47c8e3721c93bf0212cef5a24
+t
+Dsrc/main/java/tn/esprit/ProjetSpring/Controllers/ClubController.java,7\c\7cda20e7903eb1eb990d44fd160fa2a971fa5f12
+s
+Csrc/main/java/tn/esprit/ProjetSpring/Services/EvenementService.java,2\0\20bb0bd9b7b023ecb072a408095dbe711b7e36c6
+u
+Esrc/main/java/tn/esprit/ProjetSpring/Services/FileStorageService.java,5\d\5d56b0bc98deb014281998163a8689397a901e93
+t
+Dsrc/main/java/tn/esprit/ProjetSpring/Services/RestaurantService.java,b\f\bf2f7ca166c719443fb8c5177e0e68caa54c4396
+s
+Csrc/main/java/tn/esprit/ProjetSpring/configs/ResourceWebConfig.java,8\d\8dec82045b7b7f00f1fd5466730f526b7f1832f1

@@ -1,2 +1,13 @@
 
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿ¹©š
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿ¹©š8ëá…„Â1
+X	java:S125"<This block of commented-out lines of code should be removed.(¨ÂÊÖ8úá…„Â1
+x
+java:S1128"VRemove this unused import 'io.micrometer.common.util.internal.logging.InternalLogger'.(£³òÌøÿÿÿÿ8€â…„Â1
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ8€â…„Â1
+s
+java:S1128"QRemove this unused import 'org.springframework.format.annotation.DateTimeFormat'.(‡ˆôƒøÿÿÿÿ8â…„Â1
+b
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8â…„Â1
+f
+java:S1128"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8â…„Â1

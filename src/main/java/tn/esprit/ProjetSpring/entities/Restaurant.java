@@ -1,9 +1,11 @@
 package tn.esprit.ProjetSpring.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +27,9 @@ public class Restaurant implements Serializable {
     long idRestaurant;
 
     String nomRestaurant;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     Date dateOuverture;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     Date dateFermeture;
     String imageRestaurant;
     @OneToOne

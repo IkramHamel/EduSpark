@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.ProjetSpring.Services.IPlatService;
 import tn.esprit.ProjetSpring.Services.PlatService;
 import tn.esprit.ProjetSpring.entities.Niveau;
 import tn.esprit.ProjetSpring.entities.Plat;
+import tn.esprit.ProjetSpring.entities.Restaurant;
 
 import java.util.List;
 
@@ -17,12 +19,13 @@ import java.util.List;
 public class PlatController {
 
     IPlatService platService;
-
+PlatService ps;
 
 
     @PostMapping("/Platadd")
-    Plat addPlat(@RequestBody Plat plat) {
-        return platService.addPlat(plat);
+    Plat addPlat(@RequestBody Plat plat, MultipartFile imagePlat) {
+
+        return platService.addPlat(plat,imagePlat );
     }
 
 /*
@@ -33,8 +36,8 @@ public class PlatController {
 */
 
     @PutMapping("/Plat/{id}/update")
-    public ResponseEntity<Plat> updatePlat(@PathVariable("id") long idPlat, @RequestBody Plat updatedPlat) {
-        Plat updatedPlatResult = platService.updatePlat(updatedPlat, idPlat);
+    public ResponseEntity<Plat> updatePlat(@PathVariable("id") long idPlat, @RequestBody Plat updatedPlat, @RequestParam(value = "file", required = false) MultipartFile imagePlat) {
+        Plat updatedPlatResult = platService.updatePlat(updatedPlat, idPlat, imagePlat);
 
         if (updatedPlatResult != null) {
             return ResponseEntity.ok(updatedPlatResult);
@@ -62,5 +65,12 @@ public class PlatController {
     @DeleteMapping("/Plat/{id}")
     void deletePlat(@PathVariable long id) {
         platService.deletePlat(id);
+    }
+
+    @CrossOrigin(allowedHeaders = "Requestor-Type", exposedHeaders = "X-Get-Header")
+    @PostMapping("/uploadImagePlat/{id}")
+    public Plat handleImageFileUpload(@RequestParam("fileImage") MultipartFile fileImage, @PathVariable long id) {
+        return ps.handleImageFileUpload(fileImage, id);
+
     }
 }

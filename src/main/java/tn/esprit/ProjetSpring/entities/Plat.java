@@ -23,6 +23,7 @@ public class Plat implements Serializable {
     private String nomPlat;
     private Long prixPlat;
     private String description;
+    private String  imagePlat;
 
     @ManyToOne(fetch = FetchType.EAGER)
     //@JsonManagedReference
