@@ -21,7 +21,10 @@ public class Reservation implements Serializable {
     long idReservation;
     Date anneeUniv;
     boolean estValide;
+    /*
     @ManyToMany(mappedBy="reservations")
     private Set<User> users;
+
+     */
 }
 

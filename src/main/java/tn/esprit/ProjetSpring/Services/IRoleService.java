@@ -13,4 +13,6 @@ public interface IRoleService {
     void deleteRole (long idRole);
 
     Role updateRole (Role role);
+    Role findByName(String name);
+
 }

@@ -1,12 +1,8 @@
 package tn.esprit.ProjetSpring.entities;
 
-
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,9 +11,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-
+@RequiredArgsConstructor
 
 public class User implements Serializable {
     @Id
@@ -28,20 +22,27 @@ public class User implements Serializable {
     String lastName;
     String password;
     long phone;
-    String verifPassword;
 
     @Column(unique = true)
     String email;
     @Column(unique = true)
     long cin;
+    String imageUrl ;
 
-    Date dateNaissance=new Date();
 
     boolean active;
-
+    private boolean isEnabled = false;
 
     @ManyToOne
     Role roles;
+
+
+
+
+/*
     @ManyToMany
     private Set<Reservation> reservations;
+
+ */
+
 }
