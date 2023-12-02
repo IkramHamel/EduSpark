@@ -1,5 +1,6 @@
 package tn.esprit.ProjetSpring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,8 @@ public class Chambre implements Serializable {
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
     @ManyToOne
-        Bloc bloc;
+
+    Bloc bloc;
 
     @OneToMany()
     private Set<Reservation> reservation;

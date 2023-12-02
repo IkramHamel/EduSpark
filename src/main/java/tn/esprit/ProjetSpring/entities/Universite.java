@@ -26,7 +26,7 @@ public class Universite implements Serializable
     String descriptonUniversite;
     int telUniversite;
     String emailUinversite;
-    @OneToOne
+    @OneToOne()
      private Foyer foyer;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="universite")
     private Set<Club> clubs;

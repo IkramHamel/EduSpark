@@ -11,4 +11,10 @@ public interface IChambreService {
     List<Chambre> getAllChambres();
     void deleteChambre(long idChambre);
     Chambre updateChambre(Chambre chambre);
+
+
+//nawres
+     List<Chambre> getChambresByFoyerAndBloc(long idFoyer, long idBloc);
+
+
 }

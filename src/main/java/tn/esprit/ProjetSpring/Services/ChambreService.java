@@ -41,4 +41,11 @@ public class ChambreService implements IChambreService {
             chambreRepository.save(chambre);
         return  ch;
     }
+
+
+//nawres
+    public List<Chambre> getChambresByFoyerAndBloc(long idFoyer, long idBloc) {
+        return chambreRepository.findByBloc_Foyer_IdFoyerAndBloc_IdBloc(idFoyer, idBloc);
+    }
+
 }
