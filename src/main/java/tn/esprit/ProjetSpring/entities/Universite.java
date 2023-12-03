@@ -16,7 +16,6 @@ import java.util.Set;
 @NoArgsConstructor
 public class Universite implements Serializable
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idUniversite;
