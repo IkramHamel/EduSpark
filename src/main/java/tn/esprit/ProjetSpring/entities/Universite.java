@@ -1,5 +1,8 @@
 package tn.esprit.ProjetSpring.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,18 +26,24 @@ public class Universite implements Serializable
     String nomUniversite;
     String adresseUniversite;
     String ville;
-    String descriptonUniversite;
+    String descriptionUniversite;
     int telUniversite;
     String emailUinversite;
-    @OneToOne
-     private Foyer foyer;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="universite")
+    String image;
+    @JsonIgnoreProperties("universite")
+    @OneToOne()
+    private Foyer foyer;
+    @JsonIgnore
+    @OneToMany( mappedBy="universite")
     private Set<Club> clubs;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "universite")
-     private Restaurant restaurant;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "universite")
+    @JsonIgnore
+    @OneToOne( mappedBy = "universite")
+    private Restaurant restaurant;
+    @JsonIgnore
+    @OneToMany( mappedBy = "universite")
     private Set<Niveau> niveaux;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "universite")
+    @JsonIgnoreProperties("universite")
+    @OneToMany( mappedBy = "universite",cascade = CascadeType.ALL)
     private Set<Actualite> actualites;
 
 }

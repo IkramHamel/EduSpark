@@ -6,8 +6,13 @@ import tn.esprit.ProjetSpring.Services.IActualiteService;
 import tn.esprit.ProjetSpring.entities.Actualite;
 
 import java.util.List;
+import java.util.Set;
+
+@CrossOrigin("http://localhost:4200")
+
 @RestController
 @AllArgsConstructor
+@RequestMapping("/actualite")
 public class ActualiteController {
     IActualiteService actualiteService;
 
@@ -38,6 +43,20 @@ public class ActualiteController {
     void deleteActualite(@PathVariable Long id){
 
         actualiteService.deleteActualite(id);
+    }
+    @PostMapping("/actualite/{idUniversite}")
+    public Actualite affecterUniversiteAActualite(@PathVariable long idUniversite,@RequestBody Actualite actualite){
+        return actualiteService.affecterUniversiteAActualite(idUniversite,actualite);
+    }
+
+    @GetMapping("/actualitebyuniversite/{idUniversite}")
+    public Set<Actualite> findActualiteByUniversite(@PathVariable long idUniversite) {
+        return actualiteService.findActualiteByUniversiteIdUniversite(idUniversite);
+    }
+
+    @PutMapping  ("/updateactualiteuniversite/{idUniversite}/{idActualite}")
+    public Actualite updateActualiteWithUniversite(@PathVariable long idUniversite, @PathVariable long idActualite) {
+        return actualiteService.updateActualiteWithUniversite(idUniversite, idActualite);
     }
 
 }

@@ -1,5 +1,7 @@
 package tn.esprit.ProjetSpring.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,8 +24,10 @@ public class Actualite implements Serializable {
     String titreActualite;
     String description;
     Date dateActualite;
-    @ManyToOne
-     Universite universite;
+    @JsonIgnoreProperties("actualites")
+
+    @ManyToOne()
+    Universite universite;
 
 
 

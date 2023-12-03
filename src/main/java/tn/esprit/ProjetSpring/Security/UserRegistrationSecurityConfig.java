@@ -49,7 +49,11 @@ public class UserRegistrationSecurityConfig {
             "/chambres/**",
             "/register",
             "/foyer/**",
-            "/foyers/**"
+            "/foyers/**",
+            "/actualite/**",
+            "/universite/**",
+
+
 
     };
 

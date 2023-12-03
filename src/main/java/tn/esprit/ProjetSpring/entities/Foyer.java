@@ -26,8 +26,8 @@ public class Foyer implements Serializable {
     String imageFoyer;
     long likeFoyer;
     long dislikeFoyer;
+    @JsonIgnoreProperties("foyer")
     @OneToOne(mappedBy="foyer")
-    @JsonIgnore
     private Universite universite;
     @OneToMany(mappedBy="foyer",cascade = CascadeType.ALL)
     @JsonIgnoreProperties("foyer")

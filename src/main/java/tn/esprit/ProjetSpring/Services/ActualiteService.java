@@ -3,16 +3,20 @@ package tn.esprit.ProjetSpring.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.ProjetSpring.Repositories.ActualiteRepository;
+import tn.esprit.ProjetSpring.Repositories.UniversiteRepository;
 import tn.esprit.ProjetSpring.entities.Actualite;
 import tn.esprit.ProjetSpring.entities.Bloc;
+import tn.esprit.ProjetSpring.entities.Universite;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 
 public class ActualiteService implements IActualiteService {
     ActualiteRepository actualiteRepository;
+    UniversiteRepository universiteRepository;
     @Override
     public Actualite addActualite(Actualite actualite) {
         return actualiteRepository.save(actualite);
@@ -41,4 +45,25 @@ public class ActualiteService implements IActualiteService {
             actualiteRepository.save(actualite);
         return  ac;
     }
+
+    @Override
+    public Actualite affecterUniversiteAActualite(long idUniversite, Actualite actualite) {
+        Universite universite=universiteRepository.findById(idUniversite).orElse(null);
+        actualite.setUniversite(universite);
+        return actualiteRepository.save(actualite);
+    }
+
+    @Override
+    public Set<Actualite> findActualiteByUniversiteIdUniversite(long idUniversite) {
+        return actualiteRepository.findActualiteByUniversiteIdUniversite(idUniversite);
+    }
+
+    @Override
+    public Actualite updateActualiteWithUniversite(long idUniversite, long idActualite) {
+        Universite universite=universiteRepository.findById(idUniversite).orElse(null);
+        Actualite actualite=actualiteRepository.findById(idActualite).orElse(null);
+        actualite.setUniversite(universite);
+        return actualiteRepository.save(actualite);
+    }
+
 }
