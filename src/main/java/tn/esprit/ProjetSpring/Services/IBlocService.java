@@ -14,4 +14,12 @@ public interface IBlocService {
 
     Bloc updateBloc(Bloc bloc);
 
+
+    List<Bloc> getBlocsByFoyerId(long idFoyer);
+
+
+    List<Bloc> updateBlocForFoyer(long foyerId, long blocId, Bloc updatedBloc);
+
+    Bloc findBlocByIdFoyerAndIdBloc( long idFoyer,long idBloc) ;
+
 }

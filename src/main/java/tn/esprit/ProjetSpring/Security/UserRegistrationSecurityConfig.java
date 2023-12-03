@@ -37,11 +37,20 @@ public class UserRegistrationSecurityConfig {
             "/login/**",
             "/admin/**",
             "/user/**",
+            "/reservation/**",
+            "/chambre/**",
             "/users/**",
             "/register/session/**",
             "/register/session",
             "/users",
+            "/bloc/**",
+            "/blocs/**",
+            "/bloc/blocs/**",
+            "/chambres/**",
             "/register",
+            "/foyer/**",
+            "/foyers/**"
+
     };
 
     @Autowired

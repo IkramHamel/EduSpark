@@ -2,6 +2,7 @@ package tn.esprit.ProjetSpring.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -64,4 +65,15 @@ public class FileStorageService {
         } catch (IOException ex) {
             throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
         }
-    }}
+    }
+    public ByteArrayResource loadFileAsResource(String fileName) {
+        try {
+            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            byte[] fileContent = Files.readAllBytes(filePath);
+            return new ByteArrayResource(fileContent);
+        } catch (IOException ex) {
+            throw new RuntimeException("Could not load file: " + fileName, ex);
+        }
+    }
+
+}

@@ -1,5 +1,6 @@
 package tn.esprit.ProjetSpring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,11 +39,8 @@ public class User implements Serializable {
 
 
 
-
-/*
-    @ManyToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Reservation> reservations;
-
- */
 
 }
