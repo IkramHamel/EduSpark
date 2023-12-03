@@ -51,7 +51,10 @@ public class UserRegistrationSecurityConfig {
             "/foyer/**",
             "/foyers/**",
             "/actualite/**",
+            "/restaurant/**",
+            "/plat/**",
             "/universite/**",
+
 
 
 

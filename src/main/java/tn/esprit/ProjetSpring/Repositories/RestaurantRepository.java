@@ -6,4 +6,5 @@ import tn.esprit.ProjetSpring.entities.Reservation;
 import tn.esprit.ProjetSpring.entities.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant,Long> {
+
 }
