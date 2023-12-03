@@ -41,3 +41,7 @@ t
 Dsrc/main/java/tn/esprit/ProjetSpring/Services/RestaurantService.java,b\f\bf2f7ca166c719443fb8c5177e0e68caa54c4396
 s
 Csrc/main/java/tn/esprit/ProjetSpring/configs/ResourceWebConfig.java,8\d\8dec82045b7b7f00f1fd5466730f526b7f1832f1
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0

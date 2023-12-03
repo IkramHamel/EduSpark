@@ -1,10 +1,13 @@
 package tn.esprit.ProjetSpring.Controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import tn.esprit.ProjetSpring.Repositories.PlatRepository;
+import tn.esprit.ProjetSpring.Repositories.RestaurantRepository;
 import tn.esprit.ProjetSpring.Services.IPlatService;
 import tn.esprit.ProjetSpring.Services.PlatService;
 import tn.esprit.ProjetSpring.entities.Niveau;
@@ -21,7 +24,11 @@ public class PlatController {
     IPlatService platService;
 PlatService ps;
 
+    @Autowired
+    private PlatRepository platRepository;
 
+    @Autowired
+    private RestaurantRepository restaurantRepository;
     @PostMapping("/Platadd")
     Plat addPlat(@RequestBody Plat plat, MultipartFile imagePlat) {
 
@@ -72,5 +79,25 @@ PlatService ps;
     public Plat handleImageFileUpload(@RequestParam("fileImage") MultipartFile fileImage, @PathVariable long id) {
         return ps.handleImageFileUpload(fileImage, id);
 
+    }
+
+
+
+
+
+    @GetMapping("/api/statistics/total-dishes")
+    public ResponseEntity<Long> getTotalDishes() {
+        return ResponseEntity.ok(platRepository.count());
+    }
+
+    @GetMapping("/api/statistics/average-dish-price")
+    public ResponseEntity<Double> getAverageDishPrice() {
+        Double avgPrice = platRepository.findAveragePrice();
+        return ResponseEntity.ok(avgPrice != null ? avgPrice : 0.0);
+    }
+
+    @GetMapping("/api/statistics/total-restaurants")
+    public ResponseEntity<Long> getTotalRestaurants() {
+        return ResponseEntity.ok(restaurantRepository.count());
     }
 }

@@ -1,6 +1,11 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü¾’Èúÿÿÿÿ
+d
+java:S2259&"BA "NullPointerException" could be thrown; "plat" is nullable here.(·Ë›¸ùÿÿÿÿ8çğÉ´Â1
 X
-java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8¶„Ú¿1
+java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8ß£˜¸Â1
 ^
-java:S1128"ARemove this unused import 'tn.esprit.ProjetSpring.entities.Bloc'.(ÑŸ½µ8¶„Ú¿1
+java:S1128"ARemove this unused import 'tn.esprit.ProjetSpring.entities.Bloc'.(ÑŸ½µ8à£˜¸Â1
+d
+java:S1128
+"GRemove this unused import 'tn.esprit.ProjetSpring.entities.Restaurant'.(…ûµô8â£˜¸Â1
