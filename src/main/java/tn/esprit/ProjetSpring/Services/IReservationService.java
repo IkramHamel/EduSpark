@@ -1,7 +1,9 @@
 package tn.esprit.ProjetSpring.Services;
 
+import jakarta.mail.MessagingException;
 import tn.esprit.ProjetSpring.entities.Reservation;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface IReservationService {
@@ -10,4 +12,9 @@ public interface IReservationService {
     List<Reservation> getAllReservations();
     void deleteReservation(long idReservation);
     Reservation updateReservation(Reservation reservation);
-}
+     List<Reservation> getReservationUser(Long id);
+
+     void sendEmailReservation(Reservation r) throws MessagingException, UnsupportedEncodingException ;
+
+
+    }

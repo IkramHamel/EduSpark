@@ -1,5 +1,7 @@
 package tn.esprit.ProjetSpring.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,14 +19,19 @@ import java.util.Set;
 public class Chambre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   long idChambre;
+    long idChambre;
     long numeroChambre;
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
-    @ManyToOne
-        Bloc bloc;
 
-    @OneToMany()
-    private Set<Reservation> reservation;
+    String imageUrl;
+
+    @ManyToOne
+    @JsonIgnoreProperties("chambre")
+    Bloc bloc;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("chambre")
+    private Reservation reservation;
 
 }

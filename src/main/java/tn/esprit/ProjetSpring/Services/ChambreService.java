@@ -2,7 +2,10 @@ package tn.esprit.ProjetSpring.Services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import tn.esprit.ProjetSpring.Repositories.BlocRepository;
 import tn.esprit.ProjetSpring.Repositories.ChambreRepository;
+import tn.esprit.ProjetSpring.entities.Bloc;
 import tn.esprit.ProjetSpring.entities.Chambre;
 
 import java.util.List;
@@ -12,6 +15,16 @@ public class ChambreService implements IChambreService {
 
 
      ChambreRepository chambreRepository;
+     BlocRepository blocRepository;
+    FileStorageService fileStorageService;
+
+
+    @Override
+    public Chambre addChambree(Chambre chambre,long idBloc) {
+        Bloc b=blocRepository.findById(idBloc).orElse(null);
+        chambre.setBloc(b);
+        return chambreRepository.save(chambre);
+    }
 
 
     @Override
@@ -23,6 +36,8 @@ public class ChambreService implements IChambreService {
     public Chambre getChambre(Long id) {
         return chambreRepository.findById(id).orElse(null);
     }
+
+
 
     @Override
     public List<Chambre> getAllChambres() {
@@ -40,5 +55,16 @@ public class ChambreService implements IChambreService {
         if (ch!=null)
             chambreRepository.save(chambre);
         return  ch;
+    }
+
+    @Override
+    public Chambre handleImageFileUpload(MultipartFile fileImage, long id) {
+        if (fileImage.isEmpty()) {
+            return null;
+        }
+        String fileName = fileStorageService.storeFile(fileImage);
+        Chambre chambre = chambreRepository.findById(id).orElse(null);
+        chambre.setImageUrl(fileName);
+        return chambreRepository.save(chambre);
     }
 }

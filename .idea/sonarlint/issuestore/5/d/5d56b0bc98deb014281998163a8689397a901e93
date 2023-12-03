@@ -1,0 +1,17 @@
+
+b	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(ÃÔ÷ı8øË›¶À1
+b	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(ÃÔ÷ı8øË›¶À1
+b	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(ƒşˆ8øË›¶À1
+g	java:S112I"FDefine and throw a dedicated exception instead of using a generic one.(äï¹èÿÿÿÿÿ8²Öû¸À1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü¾’Èúÿÿÿÿ8ıË›¶À1
+t
+java:S22591"RA "NullPointerException" could be thrown; "getOriginalFilename()" can return null.(›ç³îùÿÿÿÿ8‹Ì›¶À1
+Z
+java:S1128"8Remove this unused import 'jakarta.annotation.Resource'.(ÄĞÛûÿÿÿÿ8†‡ü¸À1
+f
+java:S1128"DRemove this unused import 'org.springframework.core.io.UrlResource'.(ÿÙØ†ÿÿÿÿÿ8†‡ü¸À1
+t
+java:S1128
+"RRemove this unused import 'tn.esprit.ProjetSpring.Repositories.ChambreRepository'.(ŞÆÍÆıÿÿÿÿ8†‡ü¸À1
+F
+java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å8ÈŞ”¹À1

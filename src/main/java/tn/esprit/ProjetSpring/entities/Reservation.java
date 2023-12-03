@@ -1,5 +1,6 @@
 package tn.esprit.ProjetSpring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +9,6 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -21,7 +21,12 @@ public class Reservation implements Serializable {
     long idReservation;
     Date anneeUniv;
     boolean estValide;
-    @ManyToMany(mappedBy="reservations")
-    private Set<User> users;
+
+    @OneToOne(mappedBy = "reservation")
+    @JsonIgnoreProperties("reservation")
+    Chambre chambre;
+
+    @ManyToOne
+    private User user;
 }
 

@@ -1,7 +1,7 @@
 package tn.esprit.ProjetSpring.entities;
 
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,13 +35,15 @@ public class User implements Serializable {
     @Column(unique = true)
     long cin;
 
-    Date dateNaissance=new Date();
+    Date dateNaissance = new Date();
 
     boolean active;
 
 
     @ManyToOne
     Role roles;
-    @ManyToMany
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
     private Set<Reservation> reservations;
 }

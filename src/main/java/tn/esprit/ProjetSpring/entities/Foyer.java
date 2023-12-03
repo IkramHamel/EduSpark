@@ -1,5 +1,6 @@
 package tn.esprit.ProjetSpring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,9 @@ public class Foyer implements Serializable {
     long capaciteFoyer;
     @OneToOne(mappedBy="foyer")
     private Universite universite;
+
     @OneToMany(mappedBy="foyer")
+    @JsonIgnore
     private Set<Bloc> blocs;
 
 }
