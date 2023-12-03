@@ -76,6 +76,7 @@ public class BlocService implements IBlocService{
                 existingBloc.setNomBloc(updatedBloc.getNomBloc());
                 existingBloc.setCapaciteBloc(updatedBloc.getCapaciteBloc());
                 existingBloc.setNombreEtage(updatedBloc.getNombreEtage());
+                existingBloc.setImageBloc(updatedBloc.getImageBloc());
 
                 // Enregistrer les modifications
                 blocRepository.save(existingBloc);

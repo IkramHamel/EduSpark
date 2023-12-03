@@ -37,7 +37,7 @@ public class BlocController {
         return blocService.getBloc((id));
     }
 
-    @GetMapping("/admin/blocs")
+    @GetMapping("/blocs")
     List<Bloc> retrieveBlocs(Bloc bloc){
         return blocService.getAllBlocs();
     }
