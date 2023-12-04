@@ -127,7 +127,7 @@ public class AuthController {
         if (user.isPresent()) {
             String passwordResetToken = UUID.randomUUID().toString();
             userService.createPasswordResetTokenForUser(user.get(), passwordResetToken);
-            passwordResetUrl = passwordResetEmailLink(user.get(), "http://localhost:4200", passwordResetToken);
+            passwordResetUrl = passwordResetEmailLink(user.get(), "*", passwordResetToken);
         }
         return passwordResetUrl;
     }

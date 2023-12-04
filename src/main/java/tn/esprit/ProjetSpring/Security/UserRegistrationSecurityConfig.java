@@ -54,10 +54,13 @@ public class UserRegistrationSecurityConfig {
             "/restaurant/**",
             "/plat/**",
             "/universite/**",
+            "/specialites/**",
+            "/matieres/**",
 
 
 
-
+            "/**",
+            "**",
     };
 
     @Autowired
@@ -83,7 +86,8 @@ public class UserRegistrationSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
+        return http
+                .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(UN_SECURED_URLs).permitAll().and()
                 .authorizeHttpRequests().requestMatchers(SECURED_URLs)

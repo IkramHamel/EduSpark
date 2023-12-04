@@ -8,7 +8,7 @@ import tn.esprit.ProjetSpring.entities.Actualite;
 import java.util.List;
 import java.util.Set;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 
 @RestController
 @AllArgsConstructor

@@ -39,9 +39,9 @@ public class Universite implements Serializable
     @JsonIgnore
     @OneToOne( mappedBy = "universite")
     private Restaurant restaurant;
-    @JsonIgnore
-    @OneToMany( mappedBy = "universite")
-    private Set<Niveau> niveaux;
+    @JsonIgnoreProperties("universite")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "universite")
+    private Set<Specialite> specialites;
     @JsonIgnoreProperties("universite")
     @OneToMany( mappedBy = "universite",cascade = CascadeType.ALL)
     private Set<Actualite> actualites;

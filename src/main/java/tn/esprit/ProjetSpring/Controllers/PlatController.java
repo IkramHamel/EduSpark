@@ -10,7 +10,6 @@ import tn.esprit.ProjetSpring.Repositories.PlatRepository;
 import tn.esprit.ProjetSpring.Repositories.RestaurantRepository;
 import tn.esprit.ProjetSpring.Services.IPlatService;
 import tn.esprit.ProjetSpring.Services.PlatService;
-import tn.esprit.ProjetSpring.entities.Niveau;
 import tn.esprit.ProjetSpring.entities.Plat;
 import tn.esprit.ProjetSpring.entities.Restaurant;
 

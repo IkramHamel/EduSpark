@@ -1,22 +1,26 @@
 package tn.esprit.ProjetSpring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
+
 @Entity
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Matieres implements Serializable {
+public class Matiere implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int idMatiere;
-    String nomMatiere,descriptionMatiere,ficheModule;
+    long id;
+    String nom;
+    int ects;
+    String description;
+    String imageUrl;
+    //@JsonIgnoreProperties("matieres")
     @ManyToOne
-    Niveau niveau;
+    Specialite specialite;
 }
