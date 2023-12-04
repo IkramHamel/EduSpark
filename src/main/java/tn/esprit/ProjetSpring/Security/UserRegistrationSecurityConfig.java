@@ -56,9 +56,6 @@ public class UserRegistrationSecurityConfig {
             "/universite/**",
             "/specialites/**",
             "/matieres/**",
-
-
-
             "/**",
             "**",
     };
