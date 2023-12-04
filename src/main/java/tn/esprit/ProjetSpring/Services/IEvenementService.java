@@ -1,18 +1,23 @@
 package tn.esprit.ProjetSpring.Services;
 
+import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.ProjetSpring.entities.Evenement;
 
 import java.util.List;
 
 public interface IEvenementService {
-    Evenement addEvenement (Evenement evenement);
+    Evenement addEvent(Evenement event, Long idClub);
 
-    Evenement getEvenement(Long IdEvenement);
+    Evenement getEvent(Long idEvent);
 
-    List<Evenement> getAllEvenements();
+    List<Evenement> getAllEvents();
 
-    Void deleteBy (Long IdEvenement);
+    void deleteEvent(Long idEvent);
 
-    Evenement updateEvenement (Evenement evenement);
+    Evenement updateEvent(Evenement event, Long id);
+
+    Evenement handleImageFileUpload(MultipartFile fileImage, long id);
+
+    String shareFb(Long id);
 }
 

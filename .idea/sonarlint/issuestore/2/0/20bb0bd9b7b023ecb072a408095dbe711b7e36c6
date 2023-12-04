@@ -1,0 +1,9 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü¾’Èúÿÿÿÿ8‰™Ë±Ã1
+e
+java:S2259F"CA "NullPointerException" could be thrown; "event" is nullable here.(€×¶øÿÿÿÿ8¢™Ë±Ã1
+`
+java:S2259X"CA "NullPointerException" could be thrown; "event" is nullable here.(¸Â“ò8£™Ë±Ã1
+h
+java:S2259<"FA "NullPointerException" could be thrown; "oldEvent" is nullable here.(³ğÙÙúÿÿÿÿ8£™Ë±Ã1
+L	java:S106^"+Replace this use of System.err by a logger.(ùøàŠÿÿÿÿÿ8¸™Ë±Ã1

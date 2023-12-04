@@ -33,8 +33,8 @@ public class Universite implements Serializable
     @JsonIgnoreProperties("universite")
     @OneToOne()
     private Foyer foyer;
-    @JsonIgnore
-    @OneToMany( mappedBy="universite")
+    @JsonIgnoreProperties("universite")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="universite")
     private Set<Club> clubs;
     @JsonIgnore
     @OneToOne( mappedBy = "universite")
