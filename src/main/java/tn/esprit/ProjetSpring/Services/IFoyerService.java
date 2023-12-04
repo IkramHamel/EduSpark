@@ -16,8 +16,7 @@ public interface IFoyerService {
 
     void ajouterBlocAuFoyer(long idFoyer, Bloc bloc) ;
 
-    public Foyer likeFoyer(long foyerId);
-    public Foyer dislikeFoyer(long foyerId);
+    long calculerSommeCapaciteTousLesFoyers();
 
 
 }

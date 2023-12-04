@@ -77,15 +77,12 @@ public class FoyerController {
         }
     }
 
-
-    @PostMapping("/like/{idFoyer}")
-    public Foyer likeFoyer(@PathVariable long idFoyer) {
-        return foyerService.likeFoyer(idFoyer);
+    @GetMapping("/sommeCapaciteTousLesFoyers")
+    public ResponseEntity<Long> obtenirSommeCapaciteTousLesFoyers() {
+        long sommeCapacite = foyerService.calculerSommeCapaciteTousLesFoyers();
+        return ResponseEntity.ok(sommeCapacite);
     }
 
-    @PostMapping("/dislike/{idFoyer}")
-    public Foyer dislikeFoyer(@PathVariable long idFoyer) {
-        return foyerService.dislikeFoyer(idFoyer);
-    }
+
 
 }

@@ -8,6 +8,7 @@ import tn.esprit.ProjetSpring.Repositories.FoyerRepository;
 import tn.esprit.ProjetSpring.Repositories.UniversiteRepository;
 import tn.esprit.ProjetSpring.entities.Foyer;
 import tn.esprit.ProjetSpring.entities.Universite;
+import tn.esprit.ProjetSpring.entities.User;
 
 import java.util.List;
 @Service
@@ -42,17 +43,24 @@ public class UniversiteService implements IUniversiteService {
     }
 
     @Override
-    public Universite updateUniversite(Universite universite,MultipartFile imageFile) {
+    public Universite updateUniversite(Universite universite, MultipartFile imageFile) {
         Universite univ = universiteRepository.findById(universite.getIdUniversite()).orElse(null);
         if (univ != null) {
-            String image = fileStorageService.storeFile(imageFile);
-            universite.setImage(image);
+            if (imageFile != null && !imageFile.isEmpty()) {
+                String image = fileStorageService.storeFile(imageFile);
+                universite.setImage(image);
+            } else {
+                universite.setImage(univ.getImage());
+            }
+
             Foyer f = univ.getFoyer();
             universite.setFoyer(f);
             universiteRepository.save(universite);
         }
         return univ;
     }
+
+
 
     @Override
     public Universite addUniversiteByFoyer(Universite universite, long idFoyer, MultipartFile imageFile){

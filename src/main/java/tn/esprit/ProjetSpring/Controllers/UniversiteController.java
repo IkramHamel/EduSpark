@@ -11,7 +11,7 @@ import tn.esprit.ProjetSpring.Services.IUniversiteService;
 import tn.esprit.ProjetSpring.entities.Universite;
 
 import java.util.List;
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 
 @RestController
 @AllArgsConstructor

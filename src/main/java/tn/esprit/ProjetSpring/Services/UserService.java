@@ -103,16 +103,31 @@ public class UserService implements IUserService{
 
     @Override
     public User updateUser(User user, MultipartFile imageFile) {
+        User existingUser = userRepository.findById(user.getIdUser()).orElse(null);
 
-        User us = userRepository.findById(user.getIdUser()).orElse(null);
-        if (us != null) {
-            String imageUrl = fileStorageService.storeFile(imageFile);
-            user.setImageUrl(imageUrl);
+        if (existingUser != null) {
+            // Check if a new image file is provided
+            if (imageFile != null && !imageFile.isEmpty()) {
+                // Store the new image file and update the imageUrl
+                String imageUrl = fileStorageService.storeFile(imageFile);
+                existingUser.setImageUrl(imageUrl);
+            }
 
-        userRepository.save(user);
+            // Update other fields
+            existingUser.setFirstName(user.getFirstName());
+            existingUser.setLastName(user.getLastName());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setCin(user.getCin());
+            existingUser.setPhone(user.getPhone());
+            existingUser.setPassword(user.getPassword());
+
+
+            // Update other fields as needed
+
+            userRepository.save(existingUser);
         }
-        return us;
 
+        return existingUser;
     }
 
     @Override

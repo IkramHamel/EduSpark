@@ -40,32 +40,32 @@ public class FileStorageService {
     }
 
     public String storeFile(MultipartFile file) {
-        // Check if the MultipartFile or its original filename is null
-        if (file == null || file.getOriginalFilename() == null) {
-            // Handle the case where the file or its original filename is null
-            // You might want to throw an exception or return an appropriate value
-            return "SomeDefaultValue";
-        }
-
         // Normalize file name
-        String fileName =
-                file.getOriginalFilename().split("\\.")[0] + new Date().getTime() + "-file." + getFileExtension(file.getOriginalFilename());
+        String fileName;
+        if (file == null) {
+            // Handle null file case
+            fileName = "img.png";
 
-        try {
+        } else {
+            fileName = file.getOriginalFilename().split("\\.")[0] + new Date().getTime() + "-file." + getFileExtension(file.getOriginalFilename());
+
             // Check if the filename contains invalid characters
             if (fileName.contains("..")) {
                 throw new RuntimeException(
                         "Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
-            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-
-            return fileName;
-        } catch (IOException ex) {
-            throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
+            try {
+                Path targetLocation = this.fileStorageLocation.resolve(fileName);
+                Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException ex) {
+                throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
+            }
         }
+
+        return fileName;
     }
+
     public ByteArrayResource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileStorageLocation.resolve(fileName).normalize();

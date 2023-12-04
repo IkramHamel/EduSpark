@@ -24,8 +24,7 @@ public class Foyer implements Serializable {
     long capaciteFoyer;
     long superficie;
     String imageFoyer;
-    long likeFoyer;
-    long dislikeFoyer;
+
     @JsonIgnoreProperties("foyer")
     @OneToOne(mappedBy="foyer")
     private Universite universite;

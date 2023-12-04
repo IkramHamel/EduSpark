@@ -63,21 +63,11 @@ public class FoyerService implements IFoyerService {
     }
 
 
-    public Foyer likeFoyer(long foyerId) {
-        Foyer foyer = foyerRepository.findById(foyerId)
-                .orElseThrow(() -> new RuntimeException("Foyer not found"));
-
-        foyer.setLikeFoyer(foyer.getLikeFoyer() + 1);
-
-        return foyerRepository.save(foyer);
+    public long calculerSommeCapaciteTousLesFoyers() {
+        List<Foyer> foyers = foyerRepository.findAll();
+        return foyers.stream().mapToLong(Foyer::getCapaciteFoyer).sum();
     }
 
-    public Foyer dislikeFoyer(long foyerId) {
-        Foyer foyer = foyerRepository.findById(foyerId)
-                .orElseThrow(() -> new RuntimeException("Foyer not found"));
 
-        foyer.setDislikeFoyer(foyer.getDislikeFoyer() + 1);
 
-        return foyerRepository.save(foyer);
-    }
 }
